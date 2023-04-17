@@ -4,6 +4,7 @@ export default class Model {
     }
 
     addToCart(product) {
-        console.log(product);
+        const newProduct = JSON.parse(JSON.stringify(product));
+        this.cart.push(newProduct);
     }
 }
