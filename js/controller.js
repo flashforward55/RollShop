@@ -1,7 +1,12 @@
 import ProductsModel from './products/model.js';
+import CartModel from './cart/model.js';
+
 import * as productsView from './products/view.js'
 
 const productsModel = new ProductsModel();
+const cartModel = new CartModel();
+
+console.log(cartModel);
 
 // Асинхронная ф-я getAndRenderProducts
 // 1. Сначала получение товаров из JSON файла
