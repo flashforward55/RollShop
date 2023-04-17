@@ -11,4 +11,18 @@ async function getAndRenderProducts() {
     productsView.renderProducts(productsModel.products);
 }
 
- getAndRenderProducts();
+getAndRenderProducts();
+
+productsView.elements.productsContainer.addEventListener('click', function (event) {
+	// Совершаемое действие
+	let action = event.target.dataset.action;
+
+	// Если кликнули по счетчику внутри товаров
+    if (action === 'plus' || action === 'minus') {
+		// Находим ID продукта
+		const productId = +event.target.closest('.card').dataset.id;
+
+		// Запускаем модель для изменения счетчика
+        productsModel.updateCounter(productId, action);
+	}
+})

@@ -8,4 +8,12 @@ export default class Model {
 		this.products = await response.json();
     }
 
+    updateCounter(id, action) {
+		// Находим продукт в списке продуктов
+        const product = this.products.find((item) => item.id === id);
+
+        console.log(product);
+        console.log(action);
+	}
+
 }
