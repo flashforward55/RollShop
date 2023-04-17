@@ -49,5 +49,12 @@ productsView.elements.productsContainer.addEventListener('click', function (even
 		// Отобразить на странице в корзине - VIEW
         cartView.renderCart(cartModel.cart);
 
+        // Сбросить количество товара в каталоге
+        productsModel.resetCounter(product);
+
+        // Обновляем счетчик товара на странице
+        productsView.updateCounter(product);
+
+
 	}
 })

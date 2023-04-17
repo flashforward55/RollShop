@@ -1,22 +1,20 @@
 export default class Model {
 	constructor() {
-		this.products = [];
-    }
+		this.products = [{}];
+	}
 
-    async loadProducts() {
+	async loadProducts() {
 		const response = await fetch('./js/products.json');
-        this.products = await response.json();
+		this.products = await response.json();
 
-        for (const product of this.products) {
-            product.counter = 1;
-        }
+		for (const product of this.products) {
+			product.counter = 1;
+		}
+	}
 
-    }
-
-    updateCounter(id, action) {
-
+	updateCounter(id, action) {
 		// Находим продукт в списке продуктов
-        const product = this.getProduct(id);
+		const product = this.getProduct(id);
 
 		// При "+" - увеличиваем
 		if (action === 'plus') {
@@ -24,15 +22,18 @@ export default class Model {
 		}
 
 		// При "-" - уменьшаем, но не меньше 1
-        if (action === 'minus' && product.counter > 1) {
-            --product.counter;
-        }
+		if (action === 'minus' && product.counter > 1) {
+			--product.counter;
+		}
 
-        return product;
+		return product;
+	}
+
+	getProduct(id) {
+		return this.products.find((item) => item.id === id);
+	}
+
+    resetCounter(product) {
+        product.counter = 1;
     }
-
-    getProduct(id) {
-        return this.products.find((item) => item.id === id);
-    }
-
 }
