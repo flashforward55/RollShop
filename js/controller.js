@@ -23,7 +23,7 @@ productsView.elements.productsContainer.addEventListener('click', function (even
 	let action = event.target.dataset.action;
 
 	// Если кликнули по счетчику внутри товаров
-    if (action === 'plus' || action === 'minus') {
+	if (action === 'plus' || action === 'minus') {
 		// Находим ID продукта
 		const productId = +event.target.closest('.card').dataset.id;
 
@@ -31,6 +31,18 @@ productsView.elements.productsContainer.addEventListener('click', function (even
 		const product = productsModel.updateCounter(productId, action);
 
 		// Обновляем счетчик на странице
-        productsView.updateCounter(product);
+		productsView.updateCounter(product);
+	}
+
+	// Добавить в корзину
+    if (action === 'add-to-cart') {
+		// Находим ID продукта
+		const productId = +event.target.closest('.card').dataset.id;
+
+		// Получить товар из productsModel
+        const product = productsModel.getProduct(productId);
+
+		// Добавить в корзину - ДАННЫЕ
+        cartModel.addToCart(product);
 	}
 })

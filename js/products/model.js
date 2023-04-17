@@ -16,7 +16,7 @@ export default class Model {
     updateCounter(id, action) {
 
 		// Находим продукт в списке продуктов
-        const product = this.products.find((item) => item.id === id);
+        const product = this.getProduct(id);
 
 		// При "+" - увеличиваем
 		if (action === 'plus') {
@@ -29,6 +29,10 @@ export default class Model {
         }
 
         return product;
-	}
+    }
+
+    getProduct(id) {
+        return this.products.find((item) => item.id === id);
+    }
 
 }
