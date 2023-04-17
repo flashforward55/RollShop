@@ -40,3 +40,12 @@ export function renderProducts(productsArray) {
         elements.productsContainer.insertAdjacentHTML('beforeend', productHTML);
     })
 }
+
+export function updateCounter(product) {
+	// Находим на странице блок с продуктом
+	const counterWrapper = document.querySelector(`[data-id="${product.id}"]`);
+	// Находим див с числом счетчика
+	const counterElement = counterWrapper.querySelector('[data-counter]');
+	// Обновляем значение в разметке
+	counterElement.innerText = product.counter;
+}

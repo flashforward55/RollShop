@@ -23,6 +23,9 @@ productsView.elements.productsContainer.addEventListener('click', function (even
 		const productId = +event.target.closest('.card').dataset.id;
 
 		// Запускаем модель для изменения счетчика
-        productsModel.updateCounter(productId, action);
+		const product = productsModel.updateCounter(productId, action);
+
+		// Обновляем счетчик на странице
+        productsView.updateCounter(product);
 	}
 })
