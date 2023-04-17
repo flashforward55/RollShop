@@ -2,6 +2,7 @@ import ProductsModel from './products/model.js';
 import CartModel from './cart/model.js';
 
 import * as productsView from './products/view.js'
+import * as cartView from './cart/view.js'
 
 const productsModel = new ProductsModel();
 const cartModel = new CartModel();
@@ -40,9 +41,13 @@ productsView.elements.productsContainer.addEventListener('click', function (even
 		const productId = +event.target.closest('.card').dataset.id;
 
 		// Получить товар из productsModel
-        const product = productsModel.getProduct(productId);
+		const product = productsModel.getProduct(productId);
 
 		// Добавить в корзину - ДАННЫЕ
-        cartModel.addToCart(product);
+		cartModel.addToCart(product);
+
+		// Отобразить на странице в корзине - VIEW
+        cartView.renderCart(cartModel.cart);
+
 	}
 })
