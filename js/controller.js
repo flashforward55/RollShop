@@ -7,14 +7,15 @@ import * as cartView from './cart/view.js'
 const productsModel = new ProductsModel();
 const cartModel = new CartModel();
 
-console.log(cartModel);
 
 // Асинхронная ф-я getAndRenderProducts
 // 1. Сначала получение товаров из JSON файла
 // 2. Только после этого - отображение товаров на странице
 async function getAndRenderProducts() {
-    await productsModel.loadProducts();
-    productsView.renderProducts(productsModel.products);
+	await productsModel.loadProducts();
+	productsView.renderProducts(productsModel.products);
+	cartView.renderCart(cartModel.cart);
+	cartView.updateOrderPrice(cartModel.getTotalCartPrice());
 }
 
 getAndRenderProducts();
