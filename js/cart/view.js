@@ -57,3 +57,14 @@ function toggleCart() {
 export function updateOrderPrice(price) {
 	elements.totalPrice.innerText = new Intl.NumberFormat().format(price);
 }
+
+export function updateCounter(product) {
+    const productWrapper = elements.cartWrapper.querySelector(`[data-id="${product.id}"]`);
+    const counterElement = productWrapper.querySelector('[data-counter]');
+    counterElement.innerText = product.counter;
+}
+
+export function removeItemFromCart(product) {
+    const productWrapper = elements.cartWrapper.querySelector(`[data-id="${product.id}"]`);
+    productWrapper.remove();
+}

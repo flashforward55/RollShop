@@ -74,6 +74,17 @@ cartView.elements.cartWrapper.addEventListener('click', function (event) {
 		const productId = +event.target.closest('.cart-item').dataset.id;
 
 		// Запускаем в модели корзины метод updateCounterInCart для изменения счетчика
-		cartModel.updateCounterInCart(productId, action);
+		const product = cartModel.updateCounterInCart(productId, action);
+
+
+		if (product.counter > 0) {
+			// Обновить счетчик на странице
+			cartView.updateCounter(product);
+		} else {
+			// Удалить товар со страницы
+			cartView.removeItemFromCart(product);
+		}
+
+
 	}
 });

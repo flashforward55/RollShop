@@ -56,8 +56,6 @@ export default class Model {
 			this.cart.splice(index, 1);
         }
 
-        console.log(productInCart);
-        console.log(this.cart);
-
+        return productInCart;
 	}
 }
