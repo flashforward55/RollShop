@@ -76,7 +76,6 @@ cartView.elements.cartWrapper.addEventListener('click', function (event) {
 		// Запускаем в модели корзины метод updateCounterInCart для изменения счетчика
 		const product = cartModel.updateCounterInCart(productId, action);
 
-
 		if (product.counter > 0) {
 			// Обновить счетчик на странице
 			cartView.updateCounter(product);
@@ -85,6 +84,10 @@ cartView.elements.cartWrapper.addEventListener('click', function (event) {
 			cartView.removeItemFromCart(product);
 		}
 
+		// Пересчитать стоимость заказа в корзине
+		const totalPrice = cartModel.getTotalCartPrice();
 
+		// Обновить стоимость заказа на странице
+		cartView.updateOrderPrice(totalPrice);
 	}
 });
