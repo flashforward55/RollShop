@@ -46,12 +46,14 @@ export function renderCart(product) {
 
 function toggleCart() {
     if (elements.cartWrapper.children.length > 0) {
-		console.log('FULL');
 		elements.cartEmptyBadge.classList.add('none');
 		elements.orderForm.classList.remove('none');
     } else {
-		console.log('EMPTY');
 		elements.cartEmptyBadge.classList.remove('none');
 		elements.orderForm.classList.add('none');
     }
+}
+
+export function updateOrderPrice(price) {
+	elements.totalPrice.innerText = new Intl.NumberFormat().format(price);
 }

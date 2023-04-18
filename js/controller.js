@@ -47,14 +47,18 @@ productsView.elements.productsContainer.addEventListener('click', function (even
 		cartModel.addToCart(product);
 
 		// Отобразить на странице в корзине - VIEW
-        cartView.renderCart(cartModel.cart);
+		cartView.renderCart(cartModel.cart);
 
-        // Сбросить количество товара в каталоге
-        productsModel.resetCounter(product);
+		// Сбросить количество товара в каталоге
+		productsModel.resetCounter(product);
 
-        // Обновляем счетчик товара на странице
-        productsView.updateCounter(product);
+		// Обновляем счетчик товара на странице
+		productsView.updateCounter(product);
 
+		// Пересчитать стоимость заказа в корзине
+		const totalPrice = cartModel.getTotalCartPrice();
 
+		// Обновить стоимость заказа на странице
+		cartView.updateOrderPrice(totalPrice);
 	}
 })
