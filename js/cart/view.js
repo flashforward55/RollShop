@@ -67,4 +67,6 @@ export function updateCounter(product) {
 export function removeItemFromCart(product) {
     const productWrapper = elements.cartWrapper.querySelector(`[data-id="${product.id}"]`);
     productWrapper.remove();
+
+    toggleCart();
 }
