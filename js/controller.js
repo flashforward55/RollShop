@@ -62,3 +62,18 @@ productsView.elements.productsContainer.addEventListener('click', function (even
 		cartView.updateOrderPrice(totalPrice);
 	}
 })
+
+// Добавляем прослушку на корзине - счетчики "+" и "-"
+cartView.elements.cartWrapper.addEventListener('click', function (event) {
+	// Совершаемое действие
+	let action = event.target.dataset.action;
+
+	// Если кликнули по счетчику
+	if (action === 'plus' || action === 'minus') {
+		// Находим ID продукта
+		const productId = +event.target.closest('.cart-item').dataset.id;
+
+		// Запускаем в модели корзины метод updateCounterInCart для изменения счетчика
+		cartModel.updateCounterInCart(productId, action);
+	}
+});

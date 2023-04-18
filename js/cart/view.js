@@ -28,7 +28,7 @@ export function renderCart(product) {
                                             </div>
 
                                             <div class="price">
-                                                <div class="price__currency">${item.price}</div>
+                                                <div class="price__currency">${item.price} ₽</div>
                                             </div>
                                         </div>
                                         <!-- // cart-item__details -->
