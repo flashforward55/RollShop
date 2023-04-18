@@ -3,6 +3,10 @@ export default class Model {
 		this.cart = [];
 	}
 
+	saveCartToLocalStorage() {
+		localStorage.setItem('cart', JSON.stringify(this.cart));
+	}
+
 	addToCart(product) {
 		let productInCart;
 
@@ -18,7 +22,7 @@ export default class Model {
 			this.cart.push(newProduct);
 		}
 
-		console.log(this.cart);
+		this.saveCartToLocalStorage();
 	}
 
 	getTotalCartPrice() {
@@ -31,7 +35,7 @@ export default class Model {
 		return totalPrice;
 	}
 
-    updateCounterInCart(id, action) {
+	updateCounterInCart(id, action) {
 		let productInCart;
 
 		// Находим продукт в списке продуктов в корзине
@@ -47,15 +51,17 @@ export default class Model {
 		// При "-" - уменьшаем, но не меньше 1
 		if (action === 'minus' && productInCart.counter > 0) {
 			--productInCart.counter;
-        }
+		}
 
-        if (productInCart.counter === 0) {
-            const index = this.cart.findIndex((item) => {
+		if (productInCart.counter === 0) {
+			const index = this.cart.findIndex((item) => {
 				return item.id === productInCart.id;
-            });
+			});
 			this.cart.splice(index, 1);
-        }
+		}
 
-        return productInCart;
+		this.saveCartToLocalStorage();
+
+		return productInCart;
 	}
 }
